@@ -1,0 +1,45 @@
+<style>
+  ul, li {
+    list-style: none;
+  }
+  
+  ul > li {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    background: rgb(0, 157, 255);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    line-height: 30px;
+    border-radius: 4px;
+    margin: 0 5px 5px 0;
+    cursor: pointer;
+  }
+</style>
+<div>
+  <p>创建图层</p>
+  <ul id='create'>
+    <li name='rect'>矩形</li>
+    <li name='triangle'>三角形</li>
+    <li name='ellipse'>圆</li>
+    <li name='polygon'>多边形</li>
+    <li name='star'>星形</li>
+    <li name='line'>线条</li>
+    <li name='text'>文本</li>
+    <li name='slice'>切片</li>
+    <li name='hotspot'>热区</li>
+    <li name='image'>图片</li>
+    <li name='artboard'>画板</li>
+  </ul>
+</div>
+
+<script>
+  const createDom = document.getElementById('create');
+  
+  createDom.addEventListener('click', (e) => {
+    const target = e.target;
+    const type = target.getAttribute('name');
+    parent.postMessage({ type }, "*");
+  }, false);
+
+</script>

@@ -1,0 +1,9 @@
+{
+  "api": "1.0.0",
+  "main": "main.js",
+  "editorType": ["DT"],
+  "style": ["default.css"],
+  "ui": "ui.html",
+  "id": "demo05",
+  "name": "组件操作"
+}

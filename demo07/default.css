@@ -1,0 +1,179 @@
+html body {
+  font-size: 13px;
+  font-weight: 400;
+  text-align: LEFT;
+  line-height: 24px;
+  font-family: PingFang SC, PingFang SC-Regular;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-button {
+  background-color: transparent;
+  height: 0;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 11px;
+}
+
+*:hover::-webkit-scrollbar-thumb {
+  background: rgba(153, 165, 190, 0.35);
+}
+
+
+button {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: 0.2s;
+  outline: none;
+}
+
+button:disabled {
+  opacity: 0.3;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button,
+button.default {
+  background: rgb(255, 255, 255);
+  color: #2e2f30;
+}
+
+button:active,
+button.default:active {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+button:disabled,
+button.default:disabled {
+  background: rgb(255, 255, 255);
+}
+
+button.normal {
+  background: rgb(0, 157, 255);
+  color: rgb(255, 255, 255);
+}
+
+button.normal:active {
+  background: rgba(0, 157, 255, 0.8);
+}
+
+button.normal:disabled {
+  background: rgb(0, 157, 255);
+}
+
+button {
+  padding: 6px 12px;
+}
+
+button.xs {
+  padding: 1px 5px;
+}
+
+button.sm {
+  padding: 5px 10px;
+}
+
+button.lg {
+  padding: 10px 16px;
+}
+
+.panel {
+  border-radius: 6px;
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
+}
+
+.text-panel .title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.text-panel .remarks {
+  font-size: 12px;
+  color: #969798;
+  line-height: 20px;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+}
+
+.h1,
+h1 {
+  font-size: 36px;
+}
+
+.h2,
+h2 {
+  font-size: 30px;
+}
+
+.h3,
+h3 {
+  font-size: 24px;
+}
+
+.h1,
+.h2,
+.h3,
+h1,
+h2,
+h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.h4,
+h4 {
+  font-size: 18px;
+}
+
+.h5,
+h5 {
+  font-size: 14px;
+}
+
+.h6,
+h6 {
+  font-size: 12px;
+}
+
+.h4,
+.h5,
+.h6,
+h4,
+h5,
+h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 0 0 10px;
+}

@@ -1,0 +1,30 @@
+<style>
+	button {
+		margin: 0 5px 5px 0;
+	}
+</style>
+<div>
+	<p>页面操作</p>
+	<div>
+		<button name="addPage" class="normal">添加页面</button>
+		<button name="delPage" class="normal">删除当前页面</button>
+		<button name="renamePage" class="normal">重命名</button>
+		<button name="sortUpPage" class="normal">页面排序+1</button>
+		<button name="sortDownPage" class="normal">页面排序-1</button>
+	</div>
+</div>
+
+<script>
+	const btns = document.getElementsByTagName('button');
+	for (let i = 0; i < btns.length; i++) {
+		btns[i].addEventListener(
+			'click',
+			e => {
+				const target = e.target;
+				const type = target.getAttribute('name');
+				parent.postMessage({ type }, '*');
+			},
+			false,
+		);
+	}
+</script>

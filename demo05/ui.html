@@ -1,0 +1,82 @@
+<div>
+	<p>组件操作</p>
+	<div>
+		<p>请先选中组件， 再进行操作</p>
+		<p id="selectNum">已选中0个</p>
+		<div>
+			<div>
+				<label for="rename">新名字：</label>
+				<input type="text" id="rename" />
+			</div>
+			<button name="rename" class="normal">重命名</button>
+		</div>
+		<div>
+			<div>
+				<label for="positionX">X</label>
+				<input type="number" id="positionX" />
+			</div>
+			<div>
+				<label for="positionY">Y</label>
+				<input type="number" id="positionY" />
+			</div>
+			<button name="move" class="normal">移动</button>
+		</div>
+		<div>
+			<div>
+				<label for="width">宽</label>
+				<input type="number" id="width" />
+			</div>
+			<div>
+				<label for="height">高</label>
+				<input type="number" id="height" />
+			</div>
+			<button name="resize" class="normal">大小调整</button>
+		</div>
+		<div>
+			<div>
+				<label for="scaleNum">缩放比</label>
+				<input type="number" id="scaleNum" />
+			</div>
+			<button name="scaleNum" class="normal">大小调整</button>
+		</div>
+	</div>
+</div>
+
+<script>
+	const btns = document.getElementsByTagName('button');
+	for (let i = 0; i < btns.length; i++) {
+		btns[i].addEventListener(
+			'click',
+			e => {
+				const target = e.target;
+				const type = target.getAttribute('name');
+				if (type === 'rename') {
+					const inputText = document.getElementById('rename');
+					parent.postMessage({ type, newName: inputText.value ?? 'newName' }, '*');
+				} else if (type === 'move') {
+					const x = document.getElementById('positionX').value;
+					const y = document.getElementById('positionY').value;
+					parent.postMessage({ type, newPosition: { x, y } }, '*');
+				} else if (type === 'resize') {
+					const width = document.getElementById('width').value;
+					const height = document.getElementById('height').value;
+					parent.postMessage({ type, newSize: { width, height } }, '*');
+				} else if(type === 'scaleNum') {
+					const newScale = document.getElementById('scaleNum').value;
+					parent.postMessage({ type, newScale } , '*');
+				}
+			},
+			false,
+		);
+	}
+
+	window.addEventListener(
+		'message',
+		msg => {
+			if (msg.data.type === 'select') {
+				document.getElementById('selectNum').innerHTML = `已选中${msg.data?.num ?? 0}个`;
+			}
+		},
+		false,
+	);
+</script>

@@ -1,0 +1,9 @@
+{
+  "api": "1.0.0",
+  "main": "main.js",
+  "editorType": ["DT"],
+  "style": ["default.css"],
+  "ui": "ui.html",
+  "id": "demo01",
+  "name": "UI 界面向沙箱发送消息"
+}

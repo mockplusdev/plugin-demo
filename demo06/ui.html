@@ -1,0 +1,27 @@
+<style>
+	button {
+		margin: 0 5px 5px 0;
+	}
+</style>
+<div>
+	<p>创建资源</p>
+	<button name="addColor" class="normal">创建颜色资源</button>
+  <button name="addTextStyle" class="normal">创建文本资源</button>
+  <button name="addLayerStyle" class="normal">创建图层资源</button>
+  <button name="addSymbolMaster" class="normal">创建symbolMaster</button>
+</div>
+
+<script>
+	const btns = document.getElementsByTagName('button');
+	for (let i = 0; i < btns.length; i++) {
+		btns[i].addEventListener(
+			'click',
+			e => {
+				const target = e.target;
+				const type = target.getAttribute('name');
+				parent.postMessage({ type }, '*');
+			},
+			false,
+		);
+	}
+</script>

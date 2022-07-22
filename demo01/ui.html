@@ -1,0 +1,13 @@
+<div>
+  <p>UI 界面向沙箱发送消息</p>
+  <button id="btn_send" class="normal">发送信息</button>
+</div>
+
+<script>
+  const btn_send = document.getElementById('btn_send');
+  btn_send.addEventListener('click', () => {
+    // '*' 作为消息传递的区域限制， 不能省略
+    parent.postMessage({ type: 'info', message: 'hello sand box'}, '*');
+  }, false);
+
+</script>

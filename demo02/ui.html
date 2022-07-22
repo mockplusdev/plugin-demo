@@ -1,0 +1,12 @@
+<div>
+  <p>沙箱向 UI 界面传递消息</p>
+  <p id='showInfo'> waiting...</p>
+</div>
+
+<script>
+  const showInfo = document.getElementById('showInfo');
+  window.addEventListener('message', (msg) => {
+    showInfo.innerHTML = msg.data.message;
+  }, false);
+
+</script>

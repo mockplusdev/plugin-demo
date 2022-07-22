@@ -1,0 +1,119 @@
+<div>
+	<p>应用资源</p>
+	<p>请先选中一个图层， 再进行操作</p>
+
+	<div>
+		<p>图层资源</p>
+		<select name="layerStyle" id="layerStyleList"></select>
+		<button class="normal" name="toLayer" disabled>确定</button>
+	</div>
+
+	<div>
+		<p>文本资源</p>
+		<select name="textStyle" id="textStyleList"></select>
+		<button class="normal" name="toText" disabled>确定</button>
+	</div>
+
+	<div>
+		<p>颜色资源</p>
+		<select name="color" id="colorList"></select>
+		<span>应用至</span>
+		<select name="place" id="placeList">
+			<option value="fill">填充</option>
+			<option value="border">边框</option>
+			<option value="shadow">阴影</option>
+			<option value="background">背景</option>
+		</select>
+		<button class="normal" name="toColor" disabled>确定</button>
+	</div>
+</div>
+
+<script>
+	const btns = document.getElementsByTagName('button');
+	const colorListDom = document.getElementById('colorList');
+	const textStyleListDom = document.getElementById('textStyleList');
+	const layerStyleListDom = document.getElementById('layerStyleList');
+  const placeListDom = document.getElementById('placeList');
+
+	function parseSelect(arr) {
+		return arr
+			.map(item => {
+				return `<option value='${item.id}'>${item.name}</option>`;
+			})
+			.join(' ');
+	}
+
+	function getSelectedValue(dom) {
+		const index = dom.selectedIndex;
+		return dom.options[index].value;
+	}
+
+	window.addEventListener(
+		'message',
+		msg => {
+			if (msg.data?.type === 'select') {
+				if (msg.data?.isSelect) {
+					for (let i = 0; i < btns.length; i++) {
+						const name = btns[i].getAttribute('name');
+						if (!msg.data?.isText && name === 'toText') {
+							btns[i].setAttribute('disabled', true);
+							continue;
+						}
+
+            if (msg.data?.isText && name === 'toLayer') {
+							btns[i].setAttribute('disabled', true);
+							continue;
+						}
+
+						btns[i].removeAttribute('disabled');
+					}
+				} else {
+					for (let i = 0; i < btns.length; i++) {
+						btns[i].setAttribute('disabled', true);
+					}
+				}
+
+				const placeOptions = `
+            <option value="fill">填充</option>
+            <option value="border">边框</option>
+            <option value="shadow">阴影</option>
+            <option value="background">背景</option>`;
+
+				if (msg.data?.isText) {
+					placeListDom.innerHTML = `
+            <option value="text">文字</option>
+            ${placeOptions}`;
+				} else {
+					placeListDom.innerHTML = placeOptions;
+				}
+			} else if (msg.data?.type === 'resourceList' && msg.data?.list) {
+				const { colors, textStyles, layerStyles } = msg.data.list;
+				layerStyleListDom.innerHTML = parseSelect(layerStyles);
+				textStyleListDom.innerHTML = parseSelect(textStyles);
+				colorListDom.innerHTML = parseSelect(colors);
+			}
+		},
+		false,
+	);
+
+	for (let i = 0; i < btns.length; i++) {
+		btns[i].addEventListener(
+			'click',
+			e => {
+				const name = e.target.getAttribute('name');
+				if (name === 'toLayer') {
+					const resourceId = getSelectedValue(layerStyleListDom);
+					parent.postMessage({ type: 'layerStyle', resourceId }, '*');
+				} else if (name === 'toText') {
+					const resourceId = getSelectedValue(textStyleListDom);
+					parent.postMessage({ type: 'textStyle', resourceId }, '*');
+				} else if (name === 'toColor') {
+          const resourceId = getSelectedValue(colorListDom);
+          const useTo = getSelectedValue(placeListDom);
+          parent.postMessage({ type: 'color', resourceId, useTo }, '*');
+				}
+			},
+			false,
+		);
+	}
+</script>
