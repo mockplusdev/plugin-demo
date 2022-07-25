@@ -1,0 +1,20 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "1. demo01 UI 界面向沙箱发送消息 \r 2. demo02 沙箱向 UI 界面传递消息\r 3. demo03 创建图层 \r 4. demo04 页面操作 \r    添加页面， \r    删除当前页面， \r    重命名，\r    页面排序+1,  \r    页面排序-1 \r 5. demo05 组件操作 \r    重命名， \r    位置调整， \r    大小调整， \r    缩放，\r    ==样式调整： Fill Border Shadow，\r    ==symbol实例的覆写，\r 6. demo06 创建资源\r 7. demo07 应用资源",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mockplusdev/plugin-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mockplusdev/plugin-demo/issues"
+  },
+  "homepage": "https://github.com/mockplusdev/plugin-demo#readme"
+}

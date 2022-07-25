@@ -1,0 +1,13 @@
+{
+  "api": "1.0.0",
+  "main": "main.js",
+  "editorType": [
+    "DT"
+  ],
+  "style": [
+    "default.css"
+  ],
+  "ui": "ui.html",
+  "id": "demo08",
+  "name": "图层图片数据流的导出与使用"
+}
